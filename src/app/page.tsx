@@ -1,7 +1,5 @@
 "use client";
 
-import { log } from "console";
-import { METHODS } from "http";
 import { useState } from "react";
 
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API;
@@ -93,7 +91,7 @@ export default function Home() {
           />
 
           <button
-            className="w-full mt-4 p-4 bg-blue-900 text-white text-xl font-bold rounded-full font-mono p-4"
+            className="w-full mt-4 p-4 bg-blue-900 text-white text-xl font-bold rounded-full font-mono"
             onClick={fixText}
           >
             Fix
