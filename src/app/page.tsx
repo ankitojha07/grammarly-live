@@ -102,7 +102,7 @@ export default function Home() {
           {fixedText.length > 0 ? (
             <p className="text-md font-normal p-5 overflow-auto">{fixedText}</p>
           ) : (
-            <p className="text-md font-normal p-5 overflow-auto font-mono p-4">
+            <p className="text-md font-normal p-5 overflow-auto font-mono">
               Empty prompt...
             </p>
           )}
