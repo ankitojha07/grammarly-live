@@ -71,13 +71,18 @@ export default function Home() {
 
   return (
     <>
-      <h1 className="text-xl md:text-3xl text-center font-semibold bg-blue-800 p-8 text-white font-mono">
-        Fix Your{" "}
-        <span className="text-2xl md:text-5xl shadow-md font-bold shadow-blue-900 p-3">
-          Grammatical Mistakes
-        </span>{" "}
-        Right now.
-      </h1>
+      <div className="flex font-semibold bg-blue-800 p-8 justify-between items-center w-full font-mono text-white text-md">
+        <div className="text-xl md:text-3xl text-center w-full">
+          Fix Your{" "}
+          <span className="text-2xl md:text-5xl shadow-md font-bold shadow-blue-900 p-3">
+            Grammatical Mistakes
+          </span>{" "}
+          Right now.
+        </div>
+        <div className="text-gray-300">
+          <a href="http://localhost:3000/Details">Docs</a>
+        </div>
+      </div>
 
       <div className="w-full flex items-center justify-around flex-col sm:flex-row overflow-auto gap-10 p-8">
         <div className="flex items-start justify-between flex-col w-full sm:w-1/2 border-2 rounded-3xl max-h-[80vh] p-3 overflow-hidden min-h-[64vh]">
