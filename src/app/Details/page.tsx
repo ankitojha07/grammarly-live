@@ -14,7 +14,7 @@ export default function Details() {
           on this app?
         </div>
         <div className="text-gray-300">
-          <Link href="/">Docs</Link>
+          <Link href="/">Home</Link>
         </div>
       </div>
 
