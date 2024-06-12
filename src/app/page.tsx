@@ -108,6 +108,17 @@ export default function Home() {
           )}
         </div>
       </div>
+      <div className="footer flex justify-center items-center m-auto bg-blue-800 p-8 text-xl text-white font-mono">
+        <div>
+          Developed by{" "}
+          <a
+            href="https://www.linkedin.com/in/ankit0jha/"
+            className="text-yellow-400"
+          >
+            @Ankit Ojha
+          </a>
+        </div>
+      </div>
     </>
   );
 }
