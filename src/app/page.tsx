@@ -31,14 +31,13 @@ export default function Home() {
     {
       parts: [
         {
-          text: "Wut iz my nayme",
+          text: "",
         },
       ],
       role: "user",
     },
   ];
   const fixText = async () => {
-    console.log(text);
     let url =
       "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" +
       API_KEY;
@@ -69,38 +68,48 @@ export default function Home() {
     setIsSending(false);
 
     let responseMessage = resjson.candidates[0].content.parts[0].text;
-    console.log(responseMessage);
     setFixedText(responseMessage);
   };
 
   return (
-    <div className="w-full h-screen flex items-center justify-around flex-col sm:flex-row overflow-auto gap-10 p-8">
-      <div className="flex justify-center w-full sm:w-1/2 border-2 rounded-3xl min-h-[64vh] max-h-[80vh] overflow-hidden">
-        {fixedText.length > 0 ? (
-          <p className="text-md font-normal p-5 overflow-auto">{fixedText}</p>
-        ) : (
-          <p className="text-md font-normal p-5 overflow-auto">
-            Empty prompt...
-          </p>
-        )}
-      </div>
-      <div className="flex items-start justify-between flex-col w-full sm:w-1/2 border-2 rounded-3xl max-h-[80vh] p-3 overflow-hidden min-h-[64vh]">
-        <textarea
-          className="w-full h-32 overflow-auto resize-none focus:outline-none"
-          placeholder="Write your text here..."
-          value={text}
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-        />
+    <>
+      <h1 className="text-xl md:text-3xl text-center font-semibold bg-blue-800 p-8 text-white font-mono">
+        Fix Your{" "}
+        <span className="text-2xl md:text-5xl shadow-md font-bold shadow-blue-900 p-3">
+          Grammatical Mistakes
+        </span>{" "}
+        Right now.
+      </h1>
 
-        <button
-          className="w-full mt-4 p-4 bg-yellow-400 text-white text-lg font-semibold rounded-full"
-          onClick={fixText}
-        >
-          Fix
-        </button>
+      <div className="w-full flex items-center justify-around flex-col sm:flex-row overflow-auto gap-10 p-8">
+        <div className="flex items-start justify-between flex-col w-full sm:w-1/2 border-2 rounded-3xl max-h-[80vh] p-3 overflow-hidden min-h-[64vh]">
+          <textarea
+            className="w-full h-32 overflow-auto resize-none focus:outline-none font-mono p-4"
+            placeholder="Write your text here..."
+            value={text}
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+          />
+
+          <button
+            className="w-full mt-4 p-4 bg-blue-900 text-white text-xl font-bold rounded-full font-mono p-4"
+            onClick={fixText}
+          >
+            Fix
+          </button>
+        </div>
+
+        <div className="flex justify-center w-full sm:w-1/2 border-2 rounded-3xl min-h-[64vh] max-h-[80vh] overflow-hidden font-mono p-4">
+          {fixedText.length > 0 ? (
+            <p className="text-md font-normal p-5 overflow-auto">{fixedText}</p>
+          ) : (
+            <p className="text-md font-normal p-5 overflow-auto font-mono p-4">
+              Empty prompt...
+            </p>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
