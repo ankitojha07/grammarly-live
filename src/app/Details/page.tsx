@@ -13,7 +13,7 @@ export default function Details() {
           </span>{" "}
           on this app?
         </div>
-        <div className="text-gray-300">
+        <div className="text-blue-800 bg-white pl-4 pr-4 pt-2 pb-2">
           <Link href="/">Home</Link>
         </div>
       </div>
