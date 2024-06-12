@@ -14,3 +14,6 @@ Grammary-Live is a an online platform where you can fix the grammatrical mistake
 
 ### API Details
 - (Gemini API) [https://aistudio.google.com/app/apikey]
+
+### Live Preview
+(Grammarly-Live)[https://grammarly-live.vercel.app/]
