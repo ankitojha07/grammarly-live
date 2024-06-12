@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API;
 
@@ -13,7 +14,7 @@ export default function Home() {
     {
       parts: [
         {
-          text: "From next prompt I will be just providing you some text or sentences or paragraphs. Rewrite the grammar for me",
+          text: "From the next prompt, I will be just providing you some text or sentences or paragraphs. Rewrite the grammar for me",
         },
       ],
       role: "user",
@@ -35,12 +36,11 @@ export default function Home() {
       role: "user",
     },
   ];
-  const fixText = async () => {
-    let url =
-      "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" +
-      API_KEY;
 
-    let messageToSend = [
+  const fixText = async () => {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`;
+
+    const messageToSend = [
       ...trainingPrompt,
       {
         parts: [
@@ -53,20 +53,29 @@ export default function Home() {
     ];
 
     setIsSending(true);
-    let res = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        contents: messageToSend,
-      }),
-    });
-    let resjson = await res.json();
-    setIsSending(false);
+    try {
+      const res = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          contents: messageToSend,
+        }),
+      });
+      const resjson = await res.json();
+      setIsSending(false);
 
-    let responseMessage = resjson.candidates[0].content.parts[0].text;
-    setFixedText(responseMessage);
+      if (resjson.candidates && resjson.candidates.length > 0) {
+        const responseMessage = resjson.candidates[0].content.parts[0].text;
+        setFixedText(responseMessage);
+      } else {
+        setFixedText("No response from the API.");
+      }
+    } catch (error) {
+      setIsSending(false);
+      setFixedText("Error occurred while fetching the data.");
+    }
   };
 
   return (
@@ -80,7 +89,7 @@ export default function Home() {
           Right now.
         </div>
         <div className="text-gray-300">
-          <a href="http://localhost:3000/Details">Docs</a>
+          <Link href="/Details">Docs</Link>
         </div>
       </div>
 
@@ -98,8 +107,9 @@ export default function Home() {
           <button
             className="w-full mt-4 p-4 bg-blue-900 text-white text-xl font-bold rounded-full font-mono"
             onClick={fixText}
+            disabled={isSending}
           >
-            Fix
+            {isSending ? "Fixing..." : "Fix"}
           </button>
         </div>
 

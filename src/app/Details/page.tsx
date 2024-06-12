@@ -1,8 +1,6 @@
 "use client";
 
-import { useState } from "react";
-
-const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API;
+import Link from "next/link";
 
 export default function Details() {
   return (
@@ -16,7 +14,7 @@ export default function Details() {
           on this app?
         </div>
         <div className="text-gray-300">
-          <a href="http://localhost:3000/">Home</a>
+          <Link href="/">Docs</Link>
         </div>
       </div>
 
