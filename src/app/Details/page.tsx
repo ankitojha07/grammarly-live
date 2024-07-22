@@ -9,7 +9,7 @@ export default function Details() {
         <div className="text-xl md:text-3xl text-center w-full">
           Wanna know{" "}
           <span className="text-2xl md:text-5xl shadow-md font-bold shadow-blue-900 p-3">
-            what else you can do
+            what else you can do...
           </span>{" "}
           on this app?
         </div>
