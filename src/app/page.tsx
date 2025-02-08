@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-// const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API;
-const API_KEY = "AIzaSyB9hTnOmpGYEo5SMlYslgIY3Vblyqn0v2E";
+const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API;
+// const API_KEY = "AIzaSyB9hTnOmpGYEo5SMlYslgIY3Vblyqn0v2E";
 
 export default function Home() {
   const [text, setText] = useState("");
