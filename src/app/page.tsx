@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API;
-// const API_KEY = "AIzaSyB9hTnOmpGYEo5SMlYslgIY3Vblyqn0v2E";
+// const API_KEY = process.env.NEXT_PUBLIC_GEMINI_API;
+const API_KEY = "AIzaSyB9hTnOmpGYEo5SMlYslgIY3Vblyqn0v2E";
 
 export default function Home() {
   const [text, setText] = useState("");
@@ -124,7 +124,9 @@ export default function Home() {
             {/* {isSending ? "Fixing..." : "Fix"} 
           </button>
           */}
-          <div>{isSending ? "Fixing..." : "Fixed"}</div>
+          <div className="w-full mt-4 p-4 bg-blue-900 text-white text-xl text-center font-bold rounded-full font-mono">
+            {isSending ? "Fixing..." : "Fixed"}
+          </div>
         </div>
 
         <div className="flex justify-center w-full sm:w-1/2 border-2 rounded-3xl min-h-[64vh] max-h-[80vh] overflow-hidden font-mono p-4">
